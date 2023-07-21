@@ -2,15 +2,9 @@
   "pages": [
     //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
     {
-      "path": "pages/index/index",
-      "style": {
-        "navigationBarTitleText": "uni-app-home"
-      }
-    },
-    {
       "path": "pages/pinia/index",
       "style": {
-        "navigationBarTitleText": "状态管理工具（pinia）"
+        "navigationBarTitleText": "pinia"
       }
     },
     {
@@ -24,12 +18,6 @@
       "style": {
         "navigationBarTitleText": "uView 示例组件"
       }
-    },
-    {
-      "path": "pages/unocss/index",
-      "style": {
-        "navigationBarTitleText": "UnoCSS 示例"
-      }
     }
   ],
   "globalStyle": {
@@ -42,5 +30,35 @@
     "custom": {
       "^u-(.*)": "vk-uview-ui/components/u-$1/u-$1.vue"
     }
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#333333",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "height": "50px",
+    "fontSize": "12px",
+    "spacing": "5px",
+    "iconWidth": "22px",
+    "list": [
+      {
+        "pagePath": "pages/pinia/index",
+        "text": "pinia",
+        "iconPath": "/static/newHome/home.png",
+        "selectedIconPath": "/static/newHome/home_active.png"
+      },
+      {
+        "pagePath": "pages/axios/index",
+        "text": "axios",
+        "iconPath": "/static/newHome/message.png",
+        "selectedIconPath": "/static/newHome/message_active.png"
+      },
+      {
+        "pagePath": "pages/uview/index",
+        "text": "uview",
+        "iconPath": "/static/newHome/mine.png",
+        "selectedIconPath": "/static/newHome/mine_active.png"
+      }
+    ]
   }
 }
