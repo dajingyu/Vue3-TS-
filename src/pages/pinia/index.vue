@@ -1,60 +1,102 @@
 <template>
-  <view class="pinia-demo">
-    <view class="title-h2">Pinia(Replace Vuex)</view>
-    <text class="title-h3">{{ isEven ? 'Even' : 'Odd' }}</text>
-    <text>{{ count }}</text>
-    <view>
-      <button @click="add">Sync Add</button>
-      <button @click="asyncAdd">Async Add</button>
-    </view>
+  <view class="index-page">
+    <u-form :model="data.formData" ref="formCheck" :error-type="errorType">
+      <view @click="data.formData.show = true">22</view>
+      <u-picker
+        v-model="data.formData.show"
+        mode="time"
+        @confirm="confirm"
+        :params="params"
+      ></u-picker>
+      <u-form-item label="时间" prop="time">
+        {{ data.formData.time }}
+      </u-form-item>
+      <u-form-item label="地点" prop="intro"
+        ><u-input v-model="data.formData.intro"
+      /></u-form-item>
+
+      <u-form-item label="地点2" prop="intro2"
+        ><u-input v-model="data.formData.intro"
+      /></u-form-item>
+      <u-form-item label="地点3" prop="intro3"
+        ><u-input v-model="data.formData.intro"
+      /></u-form-item>
+      <u-form-item label="地点4" prop="intro4"
+        ><u-input v-model="data.formData.intro"
+      /></u-form-item>
+      <u-form-item label="地点5" prop="intro5"
+        ><u-input v-model="data.formData.intro"
+      /></u-form-item>
+      <u-form-item label="地点6" prop="intro6"
+        ><u-input v-model="data.formData.intro"
+      /></u-form-item>
+    </u-form>
+
+    <u-button @click="submit">异常排除</u-button>
   </view>
 </template>
+
 <script setup lang="ts">
-import { computed } from 'vue'
-import { storeToRefs } from 'pinia'
-import { useCountStore } from '@/store'
-
-// 获取自定义的store
-const store = useCountStore()
-
-// 取需要的 state
-const { count } = storeToRefs(store)
-
-// isEven
-const isEven = computed(() => store.count % 2 === 0)
-// or 从 getters 中获取
-// const { isEven } = storeToRefs(store)
-// or 从 getters 中获取
-// const isEven = computed(() => store.isEven)
-
-// add 方法
-const add = () =>
-  store.$patch((v) => {
-    v.count += 1
-  })
-// or actions
-// const add = () => store.synIncrease()
-
-// asyncAdd 方法
-// const asyncAdd = () => store.$patch((v) => {
-//   setTimeout(() => {
-//     v.count++
-//   }, 1000)
-// })
-// or actions
-const asyncAdd = () => store.asyncIncrease()
-</script>
-<style lang="scss" scoped>
-.pinia-demo {
-  text-align: center;
-
-  .title-h2 {
-    color: red;
-    font-size: 40rpx;
-  }
-
-  .title-h3 {
-    font-weight: bold;
-  }
+import { ref, reactive, onMounted, unref, computed, watch } from 'vue'
+import { onLoad, onReady } from '@dcloudio/uni-app'
+const formCheck = ref()
+const errorType = ['toast']
+const confirm = (params) => {
+  data.formData.time = `${params.year}-${params.month}-${params.day} ${params.hour}:${params.minute}:${params.second}`
 }
-</style>
+let params = {
+  year: true,
+  month: true,
+  day: true,
+  hour: true,
+  minute: true,
+  second: true,
+  province: false,
+  city: false,
+  area: false,
+  timestamp: false // 1.3.7版本提供
+}
+const data = reactive({
+  formData: {
+    show: false,
+    time: '',
+    intro: '',
+    intro2: '',
+    intro3: '',
+    intro4: '',
+    intro5: '',
+    intro6: ''
+  },
+  rules: {
+    name: [
+      {
+        required: true,
+        message: '请输入时间',
+        // 可以单个或者同时写两个触发验证方式
+        trigger: ['change', 'blur']
+      }
+    ]
+  }
+})
+
+onReady(() => {
+  formCheck.value.setRules(data.rules)
+})
+
+const submit = (e) => {
+  formCheck.value.validate((valid) => {
+    if (valid) {
+      uni.showToast({
+        title: '请求成功',
+        icon: 'none'
+      })
+
+      console.log('验证通过')
+    } else {
+      console.log('验证失败')
+    }
+  })
+}
+</script>
+
+<style scoped></style>
