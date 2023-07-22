@@ -7,6 +7,7 @@ import App from './App.vue'
 // unocss
 import 'uno.css'
 
+
 export function createApp() {
   const app = createSSRApp(App)
   app.use(Pinia.createPinia())

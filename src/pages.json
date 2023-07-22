@@ -2,27 +2,27 @@
   "pages": [
     //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
     {
-      "path": "pages/index/index",
+      "path": "pages/login/index",
       "style": {
-        "navigationBarTitleText": "登录"
+        "navigationStyle": "custom"
       }
     },
     {
-      "path": "pages/pinia/index",
+      "path": "pages/historyError/index",
       "style": {
-        "navigationBarTitleText": "pinia"
+        "navigationStyle": "custom"
       }
     },
     {
-      "path": "pages/axios/index",
+      "path": "pages/photoCheckCar/index",
       "style": {
-        "navigationBarTitleText": "Axios（网络请求示例）"
+        "navigationStyle": "custom"
       }
     },
     {
-      "path": "pages/uview/index",
+      "path": "pages/historyCheckCar/index",
       "style": {
-        "navigationBarTitleText": "uView 示例组件"
+        "navigationStyle": "custom"
       }
     }
   ],
@@ -48,20 +48,20 @@
     "iconWidth": "22px",
     "list": [
       {
-        "pagePath": "pages/pinia/index",
-        "text": "pinia",
+        "pagePath": "pages/historyError/index",
+        "text": "查看历史异常记录",
         "iconPath": "/static/newHome/home.png",
         "selectedIconPath": "/static/newHome/home_active.png"
       },
       {
-        "pagePath": "pages/axios/index",
-        "text": "axios",
+        "pagePath": "pages/photoCheckCar/index",
+        "text": "拍照检车作业",
         "iconPath": "/static/newHome/message.png",
         "selectedIconPath": "/static/newHome/message_active.png"
       },
       {
-        "pagePath": "pages/uview/index",
-        "text": "uview",
+        "pagePath": "pages/historyCheckCar/index",
+        "text": "查看历史检车记录",
         "iconPath": "/static/newHome/mine.png",
         "selectedIconPath": "/static/newHome/mine_active.png"
       }

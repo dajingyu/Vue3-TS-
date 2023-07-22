@@ -1,6 +1,6 @@
 <template>
   <view class="index-page">
-    <u-form :model="data.formData" ref="formCheck" :error-type="errorType">
+    <u-form :model="data.formData" ref="formCheck" :error-type="errorType" label-width="140rpx" :border-bottom=false>
       <view @click="data.formData.show = true">22</view>
       <u-picker
         v-model="data.formData.show"
@@ -11,24 +11,24 @@
       <u-form-item label="时间" prop="time">
         {{ data.formData.time }}
       </u-form-item>
-      <u-form-item label="地点" prop="intro"
-        ><u-input v-model="data.formData.intro"
+      <u-form-item label="地点" prop="intro" :border-bottom=false
+        ><u-input v-model="data.formData.intro" border
       /></u-form-item>
 
-      <u-form-item label="地点2" prop="intro2"
-        ><u-input v-model="data.formData.intro"
+      <u-form-item label="车号" prop="intro2" :border-bottom=false
+        ><u-input v-model="data.formData.intro" border
       /></u-form-item>
-      <u-form-item label="地点3" prop="intro3"
-        ><u-input v-model="data.formData.intro"
+      <u-form-item label="车序" prop="intro3" :border-bottom=false
+        ><u-input v-model="data.formData.intro" border
       /></u-form-item>
-      <u-form-item label="地点4" prop="intro4"
-        ><u-input v-model="data.formData.intro"
+      <u-form-item label="异常方位" prop="intro4" :border-bottom=false
+        ><u-input v-model="data.formData.intro" border
       /></u-form-item>
-      <u-form-item label="地点5" prop="intro5"
-        ><u-input v-model="data.formData.intro"
+      <u-form-item label="异常类型" prop="intro5" :border-bottom=false
+        ><u-input v-model="data.formData.intro" border
       /></u-form-item>
-      <u-form-item label="地点6" prop="intro6"
-        ><u-input v-model="data.formData.intro"
+      <u-form-item label="备注" prop="intro6" :border-bottom=false
+        ><u-input v-model="data.formData.intro" border
       /></u-form-item>
     </u-form>
 
